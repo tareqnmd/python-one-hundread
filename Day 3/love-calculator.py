@@ -17,9 +17,9 @@ for character in second_check_characters:
 
 love_score = first_check_characters_count * 10 + second_check_characters_count
 
-if love_score < 10 and love_score > 90 :
+if love_score < 10 or love_score > 90 :
     print(f'Your score is {love_score}, you go together like coke and mentos.')
-elif 40 < love_score < 50 :
+elif 40 <= love_score <= 50 :
     print(f'Your score is {love_score}, you are alright together.')
 else :
     print(f'Your score is {love_score}.')
