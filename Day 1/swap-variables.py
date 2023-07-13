@@ -1,8 +1,8 @@
-a = input('a : ');
-b = input('b : ');
+a = input('a : ')
+b = input('b : ')
 
-c = a;
-a = b;
-b = c;
+c = a
+a = b
+b = c
 
-print(f'a:{a} - b:{b}');
+print(f'a:{a} - b:{b}')
