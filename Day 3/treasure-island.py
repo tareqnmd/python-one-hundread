@@ -37,8 +37,8 @@ if cross_road == 'left':
         else:
             print('Game Over')
     else:
-        print('Game Over')
+        print('You got attacked by angry trout. Game Over')
 else:
-   print('Game Over')
+   print('You fall into hole. Game Over')
    
 
