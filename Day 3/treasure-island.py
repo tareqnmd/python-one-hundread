@@ -1,4 +1,5 @@
-print('''
+print(
+    '''
 *******************************************************************************
           |                   |                  |                     |
  _________|________________.=""_;=.______________|_____________________|_______
@@ -12,33 +13,36 @@ print('''
  _________|___________| ;`-.o`"=._; ." ` '`."\` . "-._ /_______________|_______
 |                   | |o;    `"-.o`"=._``  '` " ,__.--o;   |
 |___________________|_| ;     (#) `-.o `"=.`_.--"_o.-; ;___|___________________
-____/______/______/___|o;._    "      `".o|o_.--"    ;o;____/______/______/____
+____/______/______/___|o;._    "      `".o|o_.--"    ;o;____/______/______/____ 
 /______/______/______/_"=._o--._        ; | ;        ; ;/______/______/______/_
 ____/______/______/______/__"=._o--._   ;o|o;     _._;o;____/______/______/____
 /______/______/______/______/____"=._o._; | ;_.--"o.--"_/______/______/______/_
 ____/______/______/______/______/_____"=.o|o_.--""___/______/______/______/____
 /______/______/______/______/______/______/______/______/______/______/_____ /
 *******************************************************************************
-''')
+'''
+)
 print("Welcome to Treasure Island.")
-print("Your mission is to find the treasure.") 
-cross_road = input("Your are cross load. Where do you want to go? 'left' or 'right'\n") 
+print("Your mission is to find the treasure.")
+cross_road = input("Your are cross load. Where do you want to go? 'left' or 'right'\n")
 
-if cross_road == 'left':
-    lake_decision = input("Your came to lake. There is an island in the middle of the lake? Type 'wait' to wait for the boat. Type swim to swim across.\n") 
-    if lake_decision == 'wait':
-        door_decision = input("Your arrive at the island unharmed. There is a house with 3 doors. One red, one yellow and one blue. Which color do you choose?\n") 
-        if door_decision=='yellow':
-            print('You Win!')
-        elif door_decision =='red':
-            print('Burned by fire. Game Over')
-        elif door_decision =='blue':
-            print('Eaten by beasts. Game Over')
+if cross_road == "left":
+    lake_decision = input(
+        "Your came to lake. There is an island in the middle of the lake? Type 'wait' to wait for the boat. Type swim to swim across.\n"
+    )
+    if lake_decision == "wait":
+        door_decision = input(
+            "Your arrive at the island unharmed. There is a house with 3 doors. One red, one yellow and one blue. Which color do you choose?\n"
+        )
+        if door_decision == "yellow":
+            print("You Win!")
+        elif door_decision == "red":
+            print("Burned by fire. Game Over")
+        elif door_decision == "blue":
+            print("Eaten by beasts. Game Over")
         else:
-            print('Game Over')
+            print("Game Over")
     else:
-        print('You got attacked by angry trout. Game Over')
+        print("You got attacked by angry trout. Game Over")
 else:
-   print('You fall into hole. Game Over')
-   
-
+    print("You fall into hole. Game Over")
