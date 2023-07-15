@@ -49,3 +49,17 @@ print(f"Computer Choose {chooseAsci(computer_choose)}")
 
 if person_choose == computer_choose:
     print("Match Draw")
+elif person_choose == 0 and computer_choose == 2:
+    print("You Win")
+elif person_choose == 2 and computer_choose == 1:
+    print("You Win")
+elif person_choose == 1 and computer_choose == 0:
+    print("You Win")
+elif person_choose == 0 and computer_choose == 1:
+    print("You Lose")
+elif person_choose == 1 and computer_choose == 2:
+    print("You Lose")
+elif person_choose == 2 and computer_choose == 0:
+    print("You Lose")
+else:
+    print("Invalid Number! You lose")
