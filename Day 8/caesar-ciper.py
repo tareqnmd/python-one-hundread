@@ -40,13 +40,22 @@ def encode_text(text, shift):
         if cur_index + shift < 26:
             new_index = cur_index + shift
         else:
-            new_index = (cur_index + shift) - 25
+            new_index = (cur_index + shift) - 26
         encoded_text += alphabet[new_index]
-    return print(f"{encoded_text}")
+    return print(f"The encoded text is {encoded_text}")
 
 
 def decode_text(text, shift):
-    return print("decode")
+    decoded_text = ""
+    for char in text:
+        cur_index = alphabet.index(char)
+        new_index = 0
+        if cur_index + shift >= 0:
+            new_index = cur_index - shift
+        else:
+            new_index = 26 - (cur_index + shift)
+        decoded_text += alphabet[new_index]
+    return print(f"The decoded text is {decoded_text}")
 
 
 if direction == "encode":
