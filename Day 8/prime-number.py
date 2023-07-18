@@ -4,7 +4,7 @@ number = int(input("Check this number : "))
 def prime_number(num):
     if num == 2:
         return True
-    elif num % 2 == 0 or num == 0 or num == 1:
+    elif num % 2 == 0 or num <= 1:
         return False
     else:
         for i in range(2, num):
