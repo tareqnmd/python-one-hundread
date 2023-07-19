@@ -83,17 +83,23 @@ def caesar(text, shift, direction):
     return print(f"The {direction} text is {update_text}")
 
 
-direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
+caesar_continue = True
 
-if direction == "encode" or direction == "decode":
-    text = input("Type your message:\n").lower()
-    shift = int(input("Type the shift number:\n"))
+while caesar_continue:
+    direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
 
-    # if direction == "encode":
-    #     encode_text(text, shift)
-    # elif direction == "decode":
-    #     decode_text(text, shift)
+    if direction == "encode" or direction == "decode":
+        text = input("Type your message:\n").lower()
+        shift = int(input("Type the shift number:\n"))
 
-    caesar(text, shift, direction)
-else:
-    print("Wrong Direction")
+        # if direction == "encode":
+        #     encode_text(text, shift)
+        # elif direction == "decode":
+        #     decode_text(text, shift)
+
+        caesar(text, shift, direction)
+        result = input("Type 'yes' if you want to go again.\n")
+        if result != "yes":
+            caesar_continue = False
+    else:
+        print("Wrong Direction")
