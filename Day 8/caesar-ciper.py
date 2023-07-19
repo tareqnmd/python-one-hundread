@@ -36,8 +36,8 @@ print(logo)
 def encode_text(text, shift):
     update_text = ""
     for char in text:
-        cur_index = alphabet.index(char)
-        if cur_index >= 0:
+        if char in alphabet:
+            cur_index = alphabet.index(char)
             if (cur_index + shift) < 26:
                 update_text += alphabet[cur_index + shift]
             else:
@@ -51,8 +51,8 @@ def encode_text(text, shift):
 def decode_text(text, shift):
     update_text = ""
     for char in text:
-        cur_index = alphabet.index(char)
-        if cur_index >= 0:
+        if char in alphabet:
+            cur_index = alphabet.index(char)
             if (cur_index + shift) >= 0:
                 update_text += alphabet[cur_index - shift]
             else:
@@ -66,8 +66,8 @@ def decode_text(text, shift):
 def caesar(text, shift, direction):
     update_text = ""
     for char in text:
-        cur_index = alphabet.index(char)
-        if cur_index >= 0:
+        if char in alphabet:
+            cur_index = alphabet.index(char)
             if direction == "encode":
                 if (cur_index + shift) < 26:
                     update_text += alphabet[cur_index + shift]
