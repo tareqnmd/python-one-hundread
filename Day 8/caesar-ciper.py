@@ -27,40 +27,73 @@ alphabet = [
     "z",
 ]
 
-direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
-text = input("Type your message:\n").lower()
-shift = int(input("Type the shift number:\n"))
+
+from caesar_art import logo
+
+print(logo)
 
 
 def encode_text(text, shift):
-    encoded_text = ""
+    update_text = ""
     for char in text:
         cur_index = alphabet.index(char)
-        new_index = 0
-        if cur_index + shift < 26:
-            new_index = cur_index + shift
+        if cur_index >= 0:
+            if (cur_index + shift) < 26:
+                update_text += alphabet[cur_index + shift]
+            else:
+                update_text += alphabet[(cur_index + shift) - 26]
         else:
-            new_index = (cur_index + shift) - 26
-        encoded_text += alphabet[new_index]
-    return print(f"The encoded text is {encoded_text}")
+            update_text += char
+
+    return print(f"The encoded text is {update_text}")
 
 
 def decode_text(text, shift):
-    decoded_text = ""
+    update_text = ""
     for char in text:
         cur_index = alphabet.index(char)
-        new_index = 0
-        if cur_index + shift >= 0:
-            new_index = cur_index - shift
+        if cur_index >= 0:
+            if (cur_index + shift) >= 0:
+                update_text += alphabet[cur_index - shift]
+            else:
+                update_text += alphabet[26 - (cur_index + shift)]
         else:
-            new_index = 26 - (cur_index + shift)
-        decoded_text += alphabet[new_index]
-    return print(f"The decoded text is {decoded_text}")
+            update_text += char
+
+    return print(f"The decoded text is {update_text}")
 
 
-if direction == "encode":
-    encode_text(text, shift)
-elif direction == "decode":
-    decode_text(text, shift)
+def caesar(text, shift, direction):
+    update_text = ""
+    for char in text:
+        cur_index = alphabet.index(char)
+        if cur_index >= 0:
+            if direction == "encode":
+                if (cur_index + shift) < 26:
+                    update_text += alphabet[cur_index + shift]
+                else:
+                    update_text += alphabet[(cur_index + shift) - 26]
+            elif direction == "decode":
+                if (cur_index + shift) >= 0:
+                    update_text += alphabet[cur_index - shift]
+                else:
+                    update_text += alphabet[26 - (cur_index + shift)]
+        else:
+            update_text += char
+    return print(f"The {direction} text is {update_text}")
+
+
+direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
+
+if direction == "encode" or direction == "decode":
+    text = input("Type your message:\n").lower()
+    shift = int(input("Type the shift number:\n"))
+
+    # if direction == "encode":
+    #     encode_text(text, shift)
+    # elif direction == "decode":
+    #     decode_text(text, shift)
+
+    caesar(text, shift, direction)
 else:
     print("Wrong Direction")
