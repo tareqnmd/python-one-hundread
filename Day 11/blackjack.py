@@ -1,3 +1,3 @@
 from art import logo
 
-print(logo)
+print(f"{logo}")
