@@ -29,8 +29,12 @@ if begin == "y":
         player_another_card = input("Type 'y' to get another card, type 'n' to pass: ")
         if player_another_card == "y":
             player_cards.append(get_new_card(player_cards))
-        continue_play = input(
-            "Do you want to play a game of Blackjack? Type 'y' or 'n': "
-        )
-        if continue_play != "y":
-            play_blackjack = False
+        if sum(player_cards) <= 21:
+            print("YOu Win")
+        else:
+            print("You Went Over. You lose!")
+            continue_play = input(
+                "Do you want to play a game of Blackjack? Type 'y' or 'n': "
+            )
+            if continue_play != "y":
+                play_blackjack = False
