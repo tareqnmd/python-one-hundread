@@ -26,10 +26,10 @@ if begin == "y":
         # computer_another_card_decision = random.choice([True, False])
         if computer_another_card_decision:
             computer_cards.append(get_new_card(computer_cards))
-        player_another_card = print("Type 'y' to get another card, type 'n' to pass: ")
+        player_another_card = input("Type 'y' to get another card, type 'n' to pass: ")
         if player_another_card == "y":
             player_cards.append(get_new_card(player_cards))
-        continue_play = print(
+        continue_play = input(
             "Do you want to play a game of Blackjack? Type 'y' or 'n': "
         )
         if continue_play != "y":
