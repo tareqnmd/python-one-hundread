@@ -4,37 +4,45 @@ import random
 from art import logo, vs
 from game_data import data
 
-print(logo)
-score = 0
-choices = random.choices(data, k=2)
-
-first_item = choices[0]
-second_item = choices[1]
-
 
 def compare_info(info):
     return f"{info['name']}, a {info['description']}, from {info['country']}."
 
 
-def find_result(verdict):
-    if verdict == "A" and first_item["follower_count"] > second_item["follower_count"]:
-        return True
-    elif (
-        verdict == "B" and first_item["follower_count"] < second_item["follower_count"]
-    ):
-        return True
+def find_result(verdict, a_follower, b_follower):
+    if a_follower > b_follower:
+        return verdict == "a"
     else:
-        return False
+        return verdict == "b"
 
 
-print(f"Compare A: {compare_info(first_item)}")
-print(vs)
-print(f"Compare B: {compare_info(second_item)}")
+def game():
+    print(logo)
+    score = 0
+    choices = random.choices(data, k=2)
+    first_item = choices[0]
+    second_item = choices[1]
+    game_continue = True
 
-verdict = input("Who has more followers? Type 'A' or 'B': ")
-os.system("clear")
+    while game_continue:
+        while first_item == second_item:
+            second_item = random.choice(data)
+        print(f"Compare A: {compare_info(first_item)}")
+        print(vs)
+        print(f"Compare B: {compare_info(second_item)}")
+        verdict = input("Who has more followers? Type 'A' or 'B': ").lower()
+        result = find_result(
+            verdict, first_item["follower_count"], second_item["follower_count"]
+        )
+        os.system("clear")
+        print(logo)
 
-if find_result(verdict):
-    print(f"You're right. Current score: {score}")
-else:
-    print(f"Sorry that's wrong. Final score: {score}")
+        if result:
+            score += 1
+            print(f"You're right. Current score: {score}")
+        else:
+            game_continue = False
+            print(f"Sorry that's wrong. Final score: {score}")
+
+
+game()
