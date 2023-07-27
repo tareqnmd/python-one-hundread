@@ -15,7 +15,7 @@ def resource_check(type):
     if resources["coffee"] < menu[type]["ingredients"]["coffee"]:
         print("Sorry there is not enough water.")
         return False
-    if resources["milk"] < menu[type]["ingredients"]["milk"] and type != "espresso":
+    if type != "espresso" and resources["milk"] < menu[type]["ingredients"]["milk"]:
         print("Sorry there is not enough water.")
         return False
     return True
@@ -39,15 +39,22 @@ def money_check(command):
     return remaining_money
 
 
+def deduct_resources(command):
+    resources["water"] -= menu[command]["ingredients"]["water"]
+    if command != "espresso":
+        resources["milk"] -= menu[command]["ingredients"]["milk"]
+    resources["coffee"] -= menu[command]["ingredients"]["coffee"]
+
+
 def make_coffee(command):
     resource = resource_check(command)
-    remaining_money = money_check(command)
     if resource:
+        remaining_money = money_check(command)
         if remaining_money >= 0:
             if remaining_money > 0:
-                print(f"Here is ${remaining_money} in change.")
+                print(f"Here is ${remaining_money:.2f} in change.")
             print(f"Here is your {command} ☕️. Enjoy!")
-            return
+            return True
     return False
 
 
@@ -61,10 +68,8 @@ def coffee_machine():
         elif command == "espresso" or command == "latte" or command == "cappuccino":
             make = make_coffee(command)
             if make:
-                resources["water"] -= menu[command]["ingredients"]["water"]
-                if type != "espresso":
-                    resources["milk"] -= menu[command]["ingredients"]["milk"]
-                resources["coffee"] -= menu[command]["ingredients"]["coffee"]
+                money += menu[command]["cost"]
+                deduct_resources(command)
         elif command == "off":
             machine_continue = False
         else:
