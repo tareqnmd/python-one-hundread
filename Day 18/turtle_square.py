@@ -1,4 +1,17 @@
+import random
 from turtle import Screen, Turtle
+
+colors = [
+    "CornflowerBlue",
+    "DarkOrchid",
+    "IndianRed",
+    "DeepSkyBlue",
+    "LightSeaGreen",
+    "wheat",
+    "SlateGray",
+    "SeaGreen",
+]
+
 
 # turtle_item = Turtle()
 # turtle_item.color("red")
@@ -17,8 +30,8 @@ turtle_new_item = Turtle()
 num_sides = 3
 while num_sides < 10:
     angle = 360 / num_sides
-    print(angle)
     for _ in range(num_sides):
+        turtle_new_item.color(random.choice(colors))
         turtle_new_item.forward(100)
         turtle_new_item.right(angle)
     num_sides += 1
