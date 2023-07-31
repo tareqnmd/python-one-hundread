@@ -38,6 +38,24 @@ directions = [0, 90, 180, 270, 360]
 #     num_sides += 1
 
 
+# colormode(255)
+
+
+# def random_color():
+#     r = random.randint(0, 255)
+#     g = random.randint(0, 255)
+#     b = random.randint(0, 255)
+#     return (r, g, b)
+
+
+# turtle_rand_item = Turtle()
+# turtle_rand_item.pensize(10)
+# turtle_rand_item.speed("fastest")
+# for _ in range(200):
+#     turtle_rand_item.color(random_color())
+#     turtle_rand_item.forward(30)
+#     turtle_rand_item.setheading(random.choice(directions))
+
 colormode(255)
 
 
@@ -48,14 +66,18 @@ def random_color():
     return (r, g, b)
 
 
-turtle_rand_item = Turtle()
-turtle_rand_item.pensize(10)
-turtle_rand_item.speed("fastest")
-for _ in range(200):
-    turtle_rand_item.color(random_color())
-    turtle_rand_item.forward(30)
-    turtle_rand_item.setheading(random.choice(directions))
+turtle_circle_item = Turtle()
+turtle_circle_item.speed("fastest")
 
+
+def draw_spirograph(size_of_gap):
+    for _ in range(int(360 / size_of_gap)):
+        turtle_circle_item.color(random_color())
+        turtle_circle_item.circle(100)
+        turtle_circle_item.setheading(turtle_circle_item.heading() + size_of_gap)
+
+
+draw_spirograph(5)
 
 screen = Screen()
 screen.exitonclick()
