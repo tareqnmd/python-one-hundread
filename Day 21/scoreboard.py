@@ -1,25 +1,40 @@
 from turtle import Turtle
 
 ALIGNMENT = "center"
-FONT = ("Times New Roman", 24, "bold")
+FONT = ("Courier", 24, "normal")
 
 
 class Scoreboard(Turtle):
     def __init__(self):
         super().__init__()
         self.score = 0
-        self.hideturtle()
-        self.penup()
+        with open("./Python 1-100/Day 21/data.txt") as data:
+            self.high_score = int(data.read())
         self.color("white")
-        self.goto(0, 260)
+        self.penup()
+        self.goto(0, 270)
+        self.hideturtle()
+        self.update_scoreboard()
 
-    def start_scoreboard(self):
-        self.write(arg=f"Score: {self.score}", align=ALIGNMENT, font=FONT)
-
-    def increase_scoreboard(self):
+    def update_scoreboard(self):
         self.clear()
+        self.write(
+            f"Score: {self.score} High Score: {self.high_score}",
+            align=ALIGNMENT,
+            font=FONT,
+        )
+
+    def reset(self):
+        if self.score > self.high_score:
+            self.high_score = self.score
+            with open("./Python 1-100/Day 21/data.txt", mode="w") as data:
+                data.write(f"{self.high_score}")
+        self.score = 0
+        self.update_scoreboard()
+
+    def increase_score(self):
         self.score += 1
-        self.start_scoreboard()
+        self.update_scoreboard()
 
     def game_over(self):
         self.goto(0, 0)
