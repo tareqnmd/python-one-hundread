@@ -1,5 +1,6 @@
 us_states_file_path = "./Python 1-100/Day 25/50_states.csv"
 us_states_img_file_path = "./Python 1-100/Day 25/blank_states_img.gif"
+us_states_learn_file_path = "./Python 1-100/Day 25/states_to_learn.csv"
 
 import turtle
 
@@ -25,7 +26,7 @@ while len(guessed_states) < 50:
             if state not in guessed_states:
                 missing_states.append(state)
         new_data = pandas.DataFrame(missing_states)
-        new_data.to_csv("states_to_learn.csv")
+        new_data.to_csv(us_states_learn_file_path)
         break
     if answer_state in all_states:
         guessed_states.append(answer_state)
